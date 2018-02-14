@@ -1,0 +1,15 @@
+.rfc_textrow {
+	//color: #FFFFFF;
+}
+.rfc_labelrow {
+	//color: #0000FF;
+	//font-size: large;
+}
+.chart {
+  background: black;
+  width: 200px;
+  height: 120px;
+  border-left: 1px dotted #555;
+  border-bottom: 1px dotted #555;
+  padding: 20px 20px 20px 0;
+}
