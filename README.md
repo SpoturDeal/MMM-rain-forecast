@@ -1,7 +1,7 @@
 # MMM-rain-forecast
 A <a href="https://github.com/MichMich/MagicMirror">MagicMirror</a> module forecast rain in the Netherlands.
 
-This module is originally made By Cirdan, many thanks for his great work.
+This module is originally made by Cirdan, many thanks for his great work.
 I had to adapt because the sparkline did not work on my Mirror.
 
 I have removed the sparkline and replaced it by a real fast Scalable Vector Graphic
@@ -10,7 +10,7 @@ the Module has no more dependency on jQuery or Sparkline.
 
 ## Installation
 1. Navigate into your MagicMirror's `modules` folder and execute `git clone https://github.com/spoturdeal/MMM-rain-forecast.git`.
-2. Add the module inside `config.js` placing it where you prefer ;)
+2. Add the module inside `config.js` placing it where you prefer 
 
 
 ## Config
@@ -23,7 +23,7 @@ the Module has no more dependency on jQuery or Sparkline.
 |`width`|The width of the graphic presentation.<br>**Type:** `integer`<br>**Default:** <i>200</i>|
 |`height`| The height of the graphic presentation. <br> **Type** `integer` <br> **Default** <i>150</i> |
 |`lineColor`| The color of te line in the graphic. <br>**Type:** `string`<br>**Options:** `#any color you like`<br/>**Default:** <i>#0074d9</i> light blue
-|`fillColor`| The color of the area in the graphic. <br>**Type:** `string`<br>**Options:** 'none, #any color you like'<br/>**Default:** <i>0074d9</i> light blue
+|`fillColor`| The color of the area in the graphic. <br>**Type:** `string`<br>**Options:** 'none, #any color you like'<br/>**Default:** <i>#0074d9</i> light blue
 |`rainText`| If there is no graphic the text when the rain ends.. <br>**Type:** `string`<br>**Default:** <i>Rain until:</i>
 |`noRainText`| The text displayed if there is no rain. <br>**Type:** `string`<br>**Default:** <i>No rain until:</i>
 
@@ -39,23 +39,23 @@ Here is an example of an entry in `config.js`
 		height: 150,
 		lineColor: "#0074d9",
 		fillColor: "#0074d9",
-		rainText: "Tot: ",
-		noRainText: "Geen regen tot: "              
+		rainText: "Rain until: ",
+		noRainText: "No rain until: "              
 	}
 }
 ```
 
 ## Screenshots
 #### Display type: details
-![Screenshot of detail mode](/logoNorain.png?raw=true "Included assets")
+![Screenshot of detail mode](/logoNorain.png?raw=true "No rain")
 
 #### Display type: details 
-![Screenshot of detail mode](/logoRain.png?raw=true "Included assets")
+![Screenshot of detail mode](/logoRain.png?raw=true "Predicted rain")
 
 
 ## Notes
 Data provided by <a href="https://www.buienradar.nl/">Buienradar</a>.
-- Endpoints update every 10 minutes.
+- Update every 10 minutes.
 
 ## Contributors
 
