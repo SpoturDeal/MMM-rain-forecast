@@ -20,30 +20,25 @@ the Module has no more dependency on jQuery or Sparkline.
 |---|---|
 |`lat`|The latitude of your position.<br>**Type:** `Float`<br>**Default:** <i>52.15</i>|
 |`lon`|The longitude of your position.<br>**Type:** `Float`<br>**Default:** <i>5.5</i>|
-|`width`|The width of the graphic presentation.<br>**Type:** `integer`<br>**Default:** <i>200</i>|
-|`height`| The height of the graphic presentation. <br> **Type** `integer` <br> **Default** <i>150</i> |
-|`lineColor`| The color of te line in the graphic. <br>**Type:** `string`<br>**Options:** `#any color you like`<br/>**Default:** <i>#0074d9</i> light blue
-|`fillColor`| The color of the area in the graphic. <br>**Type:** `string`<br>**Options:** 'none, #any color you like'<br/>**Default:** <i>#0074d9</i> light blue
-|`rainText`| If there is no graphic the text when the rain ends.. <br>**Type:** `string`<br>**Default:** <i>Rain until:</i>
-|`noRainText`| The text displayed if there is no rain. <br>**Type:** `string`<br>**Default:** <i>No rain until:</i>
+|`pleaseWit`| The text while waiting for data.. <br>**Type:** `string`<br>**Default:** <i>Please wait</i>
+|`noRainText`| The text displayed if there is no rain. <br>**Type:** `string`<br>**Default:** <i>Until %s no rain</i><br>**Remark:** write %s where you like to add the time example <i>Until 17:15 no rain </i>
 
 Here is an example of an entry in `config.js`
 ```
 {
 	module: "MMM-rain-forecast",
 	position: "top_right",   // see mirror setting for options
+	header: "Expected rainfall", 
 	config: {   
                 lat: 52.15,
-                lon: 5.5				
-	        width: 200,
-		height: 150,
-		lineColor: "#0074d9",
-		fillColor: "#0074d9",
-		rainText: "Rain until: ",
-		noRainText: "No rain until: "              
+                lon: 5.5,				
+		pleaseWait: "Please wait",
+		noRainText: "Until %s no rain"              
 	}
 }
 ```
+## Language considerations
+There is no language file because only 3 text labels are used and every-one can use their own texts
 
 ## Screenshots
 #### Display type: details
@@ -60,6 +55,11 @@ Data provided by <a href="https://www.buienradar.nl/">Buienradar</a>.
 ## Contributors
 
 <a href="https://github.com/73cirdan/MMM-rainfc">Cirdan</a> For the fantastic base of this module.
+
+## Version
+
+2.1 New graphic fixed color and time labels are now a part of the graphic and added sprintf function to write no rain texts more flexible in different languages.
+
 
 The MIT License (MIT)
 =====================
