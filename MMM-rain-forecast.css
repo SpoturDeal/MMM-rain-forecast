@@ -1,15 +1,40 @@
-.rfc_textrow {
-	//color: #FFFFFF;
+svg.graph {
+    height: 220px;
+    width: 400px;
 }
-.rfc_labelrow {
-	//color: #0000FF;
-	//font-size: large;
+
+svg.graph .grid {
+  stroke: white;
+  stroke-dasharray: 1 2;
+  stroke-width: 1;
 }
-.chart {
-  background: black;
-  width: 200px;
-  height: 120px;
-  border-left: 1px dotted #555;
-  border-bottom: 1px dotted #555;
-  padding: 20px 20px 20px 0;
+
+svg.graph .points {
+  stroke: white;
+  stroke-width: 3;
+}
+svg.graph .first_set {
+  fill: #0074d9;
+}
+
+svg.graph .surfaces {
+  fill-opacity: 0.5;
+}
+
+svg.graph .grid.double {
+  stroke-opacity: 0.4;
+}
+
+svg.graph .labels {
+  font-family: Arial;
+  font-size: 14px;
+  kerning: 1;
+}
+
+svg.graph .labels.x-labels {
+  text-anchor: middle;
+}
+
+svg.graph .labels.y-labels {
+  text-anchor: end;
 }
