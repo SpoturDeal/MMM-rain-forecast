@@ -74,19 +74,19 @@ Module.register("MMM-rain-forecast",{
          * received value 77 = 200 - 77 = 123 on the canvas 
          * M01,200 is the start
          */
-        var setPoints='M01,200';
+        var setPoints='M01,100';
         // loop through the received data array raining[] normally 24 position 0 to 23
         var xAs=1;
         for (i=0;i<raining.length;i++){
             xAs=(xAs==1?xAs=2:xAs+20);         
-            setPoints += ', L' + xAs + ',' + (200-raining[i]); 
+            setPoints += ', L' + xAs + ',' + (100-raining[i]); 
         }
         // End of th3 line make sure it drops to the bottom of the canvas to avoid silly fill
-        setPoints +=', L' + xAs + ',200 Z';
+        setPoints +=', L' + xAs + ',100 Z';
         var svg='<svg class="graph" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">';
         //Set grid lines xAs ans yAs size is determined in CSS
-        svg+='<g class="grid x-grid" id="xGrid"><line x1="1" x2="1" y1="00" y2="200"></line></g>';
-        svg+='<g class="grid y-grid" id="yGrid"><line x1="1" x2="400" y1="200" y2="200"></line></g>';
+        svg+='<g class="grid x-grid" id="xGrid"><line x1="1" x2="1" y1="00" y2="100"></line></g>';
+        svg+='<g class="grid y-grid" id="yGrid"><line x1="1" x2="400" y1="100" y2="100"></line></g>';
         //Draw the line with the data 
         svg+='<g class="surfaces">';
         svg+='<path class="first_set" d="' + setPoints + '"></path>';
@@ -95,12 +95,12 @@ Module.register("MMM-rain-forecast",{
         svg+='<use class="grid double" xlink:href="#xGrid" style=""></use><use class="grid double" xlink:href="#yGrid" style=""></use>';
         // Time labels
         svg+='<g class="labels x-labels">';
-        svg+='<text x="20" y="215"  fill="white">' + times[1] + '</text>';
-        svg+='<text x="87" y="215"  fill="white">' + times[5]+ '</text>';
-        svg+='<text x="154" y="215" fill="white">' + times[9]+ '</text>';
-        svg+='<text x="221" y="215" fill="white">' + times[13] + '</text>';
-        svg+='<text x="288" y="215" fill="white">' + times[17] + '</text>';
-        svg+='<text x="355" y="215" fill="white">' + times[21] + '</text>';
+        svg+='<text x="20" y="115"  fill="white">' + times[1] + '</text>';
+        svg+='<text x="87" y="115"  fill="white">' + times[5]+ '</text>';
+        svg+='<text x="154" y="115" fill="white">' + times[9]+ '</text>';
+        svg+='<text x="221" y="115" fill="white">' + times[13] + '</text>';
+        svg+='<text x="288" y="115" fill="white">' + times[17] + '</text>';
+        svg+='<text x="355" y="115" fill="white">' + times[21] + '</text>';
         svg+='</g></svg>';
         return svg;
     },

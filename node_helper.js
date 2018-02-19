@@ -53,8 +53,10 @@ module.exports = NodeHelper.create({
 		for(var i = 0;i < lines.length-1;i++){
 			var values = lines[i].split('|');
             // split rain from time
-            rainDrops.push(values[0]=="NaN"?0:parseInt(values[0]));
-			times.push(values[1]);
+            //rainDrops.push(values[0]=="NaN"?0:(Math.pow(10,(parseInt(values[0])-109)/32)) * 10);
+            // Devide the recieved value by 3 we can use less height maximum rain = 255 /3 = 85 graph hiegh is 100
+			rainDrops.push(values[0]=="NaN"?0:parseInt(values[0])/3);
+            times.push(values[1]);
 			expectRain += parseInt(values[0]);
 		}
         // Send all to script
