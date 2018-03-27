@@ -22,6 +22,7 @@ the Module has no more dependency on jQuery or Sparkline.
 |`lon`|The longitude of your position.<br>**Type:** `Float`<br>**Default:** <i>5.5</i>|
 |`pleaseWit`| The text while waiting for data.. <br>**Type:** `string`<br>**Default:** <i>Please wait</i>
 |`noRainText`| The text displayed if there is no rain. <br>**Type:** `string`<br>**Default:** <i>Until %s no rain</i><br>**Remark:** write %s where you like to add the time example <i>Until 17:15 no rain </i>
+|`fillColour`| Defines the colour of the graphic. <br>**Type:** `string`<br>**Default:** <i>#0074d9</i><br>**Remark:** You can use colour names as in HTML like (blue, white, green) or RGB codes like #0074d9 which is bleu colour
 
 Here is an example of an entry in `config.js`
 ```
@@ -33,7 +34,8 @@ Here is an example of an entry in `config.js`
                 lat: 52.15,
                 lon: 5.5,				
 		pleaseWait: "Please wait",
-		noRainText: "Until %s no rain"              
+		noRainText: "Until %s no rain",
+		fillColour: '#0074d9'   // This is a blue color you can also use blue, cyan etc
 	}
 }
 ```
@@ -57,6 +59,8 @@ Data provided by <a href="https://www.buienradar.nl/">Buienradar</a>.
 <a href="https://github.com/73cirdan/MMM-rainfc">Cirdan</a> For the fantastic base of this module.
 
 ## Version
+
+2.2 New URL because Buienradar changed on March 27th, 2018
 
 2.1 New graphic fixed color and time labels are now a part of the graphic and added sprintf function to write no rain texts more flexible in different languages.
 
