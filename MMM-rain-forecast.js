@@ -12,7 +12,8 @@ Module.register("MMM-rain-forecast",{
 		lat: 52.15,
         lon: 5.5,
 		noRainText: 'Until %s no rain',    // write %s where you like to add the time example Until 17:15 no rain
-        pleaseWait: 'Please wait'
+        pleaseWait: 'Please wait',
+        fillColour: '#0074d9'
 	},
     // Override start method.
 	start: function() {
@@ -89,7 +90,7 @@ Module.register("MMM-rain-forecast",{
         svg+='<g class="grid y-grid" id="yGrid"><line x1="1" x2="400" y1="100" y2="100"></line></g>';
         //Draw the line with the data
         svg+='<g class="surfaces">';
-        svg+='<path class="first_set" d="' + setPoints + '"></path>';
+        svg+='<path class="first_set" style="fill:' + this.config.fillColour + '" d="' + setPoints + '"></path>';
         svg+='</g>';
         // Set the class for the grid
         svg+='<use class="grid double" xlink:href="#xGrid" style=""></use><use class="grid double" xlink:href="#yGrid" style=""></use>';
