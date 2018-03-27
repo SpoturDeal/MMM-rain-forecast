@@ -19,8 +19,8 @@ Module.register("MMM-rain-forecast",{
 		Log.log("Starting module: " + this.name);
 		this.payload = false;
 		this.sendSocketNotification("RAIN_REQUEST", {
-			updateInterval: 60000,  
-            apiBase: "https://br-gpsgadget-new.azurewebsites.net",
+			updateInterval: 60000,
+            apiBase: "https://gpsgadget.buienradar.nl",
             endpoint: "data/raintext",
             lat: this.config.lat,
             lon: this.config.lon,
@@ -36,7 +36,7 @@ Module.register("MMM-rain-forecast",{
 		return ["MMM-rain-forecast.css"];
 	},
 	socketNotificationReceived: function(notification, payload) {
-        // was not able to receive data 
+        // was not able to receive data
         if (notification == "ERROR") {
 			document.getElementById("sparkler").innerHTML=payload.error;
 			return;
@@ -46,10 +46,10 @@ Module.register("MMM-rain-forecast",{
             document.getElementById("sparkler").innerHTML="No Data";
             return;
         }
-        // no rain calculated from in node_helper.js 
+        // no rain calculated from in node_helper.js
         if (payload.expectRain == 0) {
             noRainText = this.sprintf(this.config.noRainText,payload.times[payload.times.length-1]);
-            document.getElementById("sparkler").innerHTML=noRainText 
+            document.getElementById("sparkler").innerHTML=noRainText
         } else {
             document.getElementById('sparkler').innerHTML = this.makeSVG(payload.rainDrops,payload.times)
         }
@@ -71,15 +71,15 @@ Module.register("MMM-rain-forecast",{
     makeSVG: function(raining,times){
         /* We start at position
          * The table is upside down therefor we calculate the line position down from the top of the canvas
-         * received value 77 = 200 - 77 = 123 on the canvas 
+         * received value 77 = 200 - 77 = 123 on the canvas
          * M01,200 is the start
          */
         var setPoints='M01,100';
         // loop through the received data array raining[] normally 24 position 0 to 23
         var xAs=1;
         for (i=0;i<raining.length;i++){
-            xAs=(xAs==1?xAs=2:xAs+20);         
-            setPoints += ', L' + xAs + ',' + (100-raining[i]); 
+            xAs=(xAs==1?xAs=2:xAs+20);
+            setPoints += ', L' + xAs + ',' + (100-raining[i]);
         }
         // End of th3 line make sure it drops to the bottom of the canvas to avoid silly fill
         setPoints +=', L' + xAs + ',100 Z';
@@ -87,7 +87,7 @@ Module.register("MMM-rain-forecast",{
         //Set grid lines xAs ans yAs size is determined in CSS
         svg+='<g class="grid x-grid" id="xGrid"><line x1="1" x2="1" y1="00" y2="100"></line></g>';
         svg+='<g class="grid y-grid" id="yGrid"><line x1="1" x2="400" y1="100" y2="100"></line></g>';
-        //Draw the line with the data 
+        //Draw the line with the data
         svg+='<g class="surfaces">';
         svg+='<path class="first_set" d="' + setPoints + '"></path>';
         svg+='</g>';
