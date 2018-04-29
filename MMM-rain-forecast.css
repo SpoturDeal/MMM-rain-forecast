@@ -1,40 +1,40 @@
-svg.graph {
+.MMM-rain-forecast svg.graph {
     height: 120px;
-    width: 400px;
+    width: 305px;
 }
 
-svg.graph .grid {
+.MMM-rain-forecast svg.graph .grid {
   stroke: white;
   stroke-dasharray: 1 2;
   stroke-width: 1;
 }
 
-svg.graph .points {
+.MMM-rain-forecast svg.graph .points {
   stroke: white;
   stroke-width: 3;
 }
-svg.graph .first_set {
+.MMM-rain-forecast svg.graph .first_set {
   fill: #0074d9;
 }
 
-svg.graph .surfaces {
+.MMM-rain-forecast svg.graph .surfaces {
   fill-opacity: 0.5;
 }
 
-svg.graph .grid.double {
+.MMM-rain-forecast svg.graph .grid.double {
   stroke-opacity: 0.4;
 }
 
-svg.graph .labels {
+.MMM-rain-forecast svg.graph .labels {
   font-family: Arial;
   font-size: 14px;
   kerning: 1;
 }
 
-svg.graph .labels.x-labels {
+.MMM-rain-forecast svg.graph .labels.x-labels {
   text-anchor: middle;
 }
 
-svg.graph .labels.y-labels {
+.MMM-rain-forecast svg.graph .labels.y-labels {
   text-anchor: end;
 }

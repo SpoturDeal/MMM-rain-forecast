@@ -14,7 +14,7 @@ module.exports = NodeHelper.create({
         setInterval(function() {
 			self.getData(self)
 		}, payload.updateInterval);
-		
+
 		this.getData(this);
 		return;
 	},
@@ -22,7 +22,7 @@ module.exports = NodeHelper.create({
  		request({url: self.url, method: 'GET'}, function(error, response, body) {
 			self.processData(error, response, body, self);
 		});
-		
+
 	},
     processData: function(error, response, body, self) {
        // First handle server side errors
@@ -41,7 +41,7 @@ module.exports = NodeHelper.create({
 		}
         // This is test data just to see the graph if there is no rain
         //body="077|10:05\n034|10:10\n101|10:15\n087|10:20\n077|10:25\n000|10:30\n000|10:35\n000|10:40\n077|10:45\n087|10:50\n087|10:55\n077|11:00\n077|11:05\n034|11:10\n017|11:15\n000|11:20\n000|11:25\n000|11:30\n000|11:35\n000|11:40\n000|11:45\n000|11:50\n000|11:55\n000|12:00";
-        
+
         // Make an array with the amount of rain  077|10:05 = rain|time
         var rainDrops = [];
         // Make an array with the times received
@@ -53,9 +53,10 @@ module.exports = NodeHelper.create({
 		for(var i = 0;i < lines.length-1;i++){
 			var values = lines[i].split('|');
             // split rain from time
-            //rainDrops.push(values[0]=="NaN"?0:(Math.pow(10,(parseInt(values[0])-109)/32)) * 10);
-            // Devide the recieved value by 3 we can use less height maximum rain = 255 /3 = 85 graph hiegh is 100
-			rainDrops.push(values[0]=="NaN"?0:parseInt(values[0])/3);
+            // rainDrops.push(values[0]=="NaN"?0:(Math.pow(10,(parseInt(values[0])-109)/32)) * 10);
+            // 29th April 2018 changed devide from 3 to 2.55 makes a better graph
+						// Devide the recieved value by 2.5 we can use less height maximum rain = 255 /2.55 = 100 graph height is 100
+			rainDrops.push(values[0]=="NaN"?0:parseInt(values[0])/2.55);
             times.push(values[1]);
 			expectRain += parseInt(values[0]);
 		}
@@ -68,6 +69,3 @@ module.exports = NodeHelper.create({
   }
 
 })
-
-
-

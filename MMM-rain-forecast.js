@@ -2,8 +2,9 @@
 
 /* Magic Mirror
  * Module: Rain-forecast
+ * Version 29th April 2018 decreased by request the width of the graph by 25% was 400px now 305px
  * Displays a scalable vector graph of expected rain for a lon/lat pair based on a Dutch public Api (Buienradar)
- *  https://br-gpsgadget-new.azurewebsites.net/data/raintext?lat=52.15&lon=5.5
+ *  https://gpsgadget.buienradar.nl/data/raintext?lat=52.15&lon=5.5
  * By Spoturdeal.
  */
 Module.register("MMM-rain-forecast",{
@@ -61,7 +62,7 @@ Module.register("MMM-rain-forecast",{
 		wrapper.align = "center";
 		var graphTr = document.createElement("tr");
 		var graphTd = document.createElement("td");
-        graphTd.id = "sparkler";
+    graphTd.id = "sparkler";
 		graphTd.className = "small thin light";
 		graphTd.innerHTML = this.config.pleaseWait;
 		graphTr.appendChild(graphTd);
@@ -72,14 +73,14 @@ Module.register("MMM-rain-forecast",{
     makeSVG: function(raining,times){
         /* We start at position
          * The table is upside down therefor we calculate the line position down from the top of the canvas
-         * received value 77 = 200 - 77 = 123 on the canvas
+         * received value 77 = 100 - 38 = 72 on the canvas
          * M01,200 is the start
          */
         var setPoints='M01,100';
         // loop through the received data array raining[] normally 24 position 0 to 23
         var xAs=1;
         for (i=0;i<raining.length;i++){
-            xAs=(xAs==1?xAs=2:xAs+20);
+            xAs=(xAs==1?xAs=2:xAs+13);
             setPoints += ', L' + xAs + ',' + (100-raining[i]);
         }
         // End of th3 line make sure it drops to the bottom of the canvas to avoid silly fill
@@ -87,7 +88,7 @@ Module.register("MMM-rain-forecast",{
         var svg='<svg class="graph" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">';
         //Set grid lines xAs ans yAs size is determined in CSS
         svg+='<g class="grid x-grid" id="xGrid"><line x1="1" x2="1" y1="00" y2="100"></line></g>';
-        svg+='<g class="grid y-grid" id="yGrid"><line x1="1" x2="400" y1="100" y2="100"></line></g>';
+        svg+='<g class="grid y-grid" id="yGrid"><line x1="1" x2="300" y1="100" y2="100"></line></g>';
         //Draw the line with the data
         svg+='<g class="surfaces">';
         svg+='<path class="first_set" style="fill:' + this.config.fillColour + '" d="' + setPoints + '"></path>';
@@ -97,11 +98,11 @@ Module.register("MMM-rain-forecast",{
         // Time labels
         svg+='<g class="labels x-labels">';
         svg+='<text x="20" y="115"  fill="white">' + times[1] + '</text>';
-        svg+='<text x="87" y="115"  fill="white">' + times[5]+ '</text>';
-        svg+='<text x="154" y="115" fill="white">' + times[9]+ '</text>';
-        svg+='<text x="221" y="115" fill="white">' + times[13] + '</text>';
-        svg+='<text x="288" y="115" fill="white">' + times[17] + '</text>';
-        svg+='<text x="355" y="115" fill="white">' + times[21] + '</text>';
+        svg+='<text x="73" y="115"  fill="white">' + times[5]+ '</text>';
+        svg+='<text x="126" y="115" fill="white">' + times[9]+ '</text>';
+        svg+='<text x="179" y="115" fill="white">' + times[13] + '</text>';
+        svg+='<text x="232" y="115" fill="white">' + times[17] + '</text>';
+        svg+='<text x="285" y="115" fill="white">' + times[21] + '</text>';
         svg+='</g></svg>';
         return svg;
     },
