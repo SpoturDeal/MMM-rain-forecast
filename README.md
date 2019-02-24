@@ -9,8 +9,24 @@ the Module has no more dependency on jQuery or Sparkline.
 
 
 ## Installation
+```
+cd MagicMirror/modules
+git clone https://github.com/spoturdeal/MMM-rain-forecast.git
+```
+
 1. Navigate into your MagicMirror's `modules` folder and execute `git clone https://github.com/spoturdeal/MMM-rain-forecast.git`.
 2. Add the module inside `config.js` placing it where you prefer 
+
+## Updates ##
+```
+cd MagicMirror/modules/MMM-rain-forecast
+git pull
+```
+1. Navigate to the module
+2. Pull the Update
+3. Restart the Mirror
+
+Update: 24th February 2019 Added Refresh interval (too many request sometimes ended up in not receiving any data.)
 
 
 ## Config
@@ -23,6 +39,7 @@ the Module has no more dependency on jQuery or Sparkline.
 |`pleaseWait`| The text while waiting for data.. <br>**Type:** `string`<br>**Default:** <i>Please wait</i>
 |`noRainText`| The text displayed if there is no rain. <br>**Type:** `string`<br>**Default:** <i>Until %s no rain</i><br>**Remark:** write %s where you like to add the time example <i>Until 17:15 no rain </i>
 |`fillColour`| Defines the colour of the graphic. <br>**Type:** `string`<br>**Default:** <i>#0074d9</i><br>**Remark:** You can use colour names as in HTML like (blue, white, green) or RGB codes like #0074d9 which is bleu colour
+|`refreshInterval`| Time to wait for refresh <br>**Type:** `number`<br>**Default:** <i>15</i><br>**Remark:** Time to download new data in minutes
 
 Here is an example of an entry in `config.js`
 ```
@@ -35,7 +52,8 @@ Here is an example of an entry in `config.js`
                 lon: 5.5,				
 		pleaseWait: "Please wait",
 		noRainText: "Until %s no rain",
-		fillColour: '#0074d9'   // This is a blue color you can also use blue, cyan etc
+		fillColour: '#0074d9',   // This is a blue color you can also use blue, cyan etc,
+		refreshInterval: 15  // Refresh interval in minutes 
 	}
 }
 ```
