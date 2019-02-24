@@ -14,14 +14,15 @@ Module.register("MMM-rain-forecast",{
         lon: 5.5,
 		noRainText: 'Until %s no rain',    // write %s where you like to add the time example Until 17:15 no rain
         pleaseWait: 'Please wait',
-        fillColour: '#0074d9'
+        fillColour: '#0074d9',
+        refreshInterval: 15,  // In minutes will be multiplied by 60 for seconds and 1000 for milliseconds
 	},
     // Override start method.
 	start: function() {
 		Log.log("Starting module: " + this.name);
 		this.payload = false;
 		this.sendSocketNotification("RAIN_REQUEST", {
-			updateInterval: 60000,
+			updateInterval: this.refreshInterval * 60 * 1000,
             apiBase: "https://gpsgadget.buienradar.nl",
             endpoint: "data/raintext",
             lat: this.config.lat,
