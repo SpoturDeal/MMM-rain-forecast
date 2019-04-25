@@ -9,7 +9,7 @@ module.exports = NodeHelper.create({
 	},
 	// Override socketNotificationReceived method.
 	socketNotificationReceived: function(notification, payload) {
-		self = this;
+		var self = this;
 		this.url = payload.apiBase+"/" + payload.endpoint + "?lat=" + payload.lat + "&lon="+ payload.lon;
         setInterval(function() {
 			self.getData(self)
