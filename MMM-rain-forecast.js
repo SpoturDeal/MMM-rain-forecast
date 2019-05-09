@@ -77,15 +77,14 @@ Module.register("MMM-rain-forecast",{
          * received value 77 = 100 - 38 = 72 on the canvas
          * M01,200 is the start
          */
-        var setPoints='M01,100';
+        var setPoints='M01 100 S';
         // loop through the received data array raining[] normally 24 position 0 to 23
-        var xAs=1;
         for (i=0;i<raining.length;i++){
             xAs=Math.round(i*(300/(raining.length-1)));
-            setPoints += ', L' + xAs + ',' + (100-raining[i]);
+            setPoints += xAs + ',' + (100-raining[i]) + ' ';
         }
         // End of th3 line make sure it drops to the bottom of the canvas to avoid silly fill
-        setPoints +=', L' + xAs + ',100 Z';
+        setPoints +='L' + xAs + ',100 Z';
         var svg='<svg class="graph" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">';
         //Set grid lines xAs ans yAs size is determined in CSS
         svg+='<g class="grid x-grid" id="xGrid"><line x1="1" x2="1" y1="00" y2="100"></line></g>';
