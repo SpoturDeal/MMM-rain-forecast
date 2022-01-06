@@ -23,8 +23,8 @@ Module.register("MMM-rain-forecast",{
 		this.payload = false;
 		this.sendSocketNotification("RAIN_REQUEST", {
 			updateInterval: this.config.refreshInterval * 60 * 1000,
-            apiBase: "https://gpsgadget.buienradar.nl",
-            endpoint: "data/raintext",
+            apiBase: "https://graphdata.buienradar.nl",
+            endpoint: "forecast/json",
             lat: this.config.lat,
             lon: this.config.lon,
 		});
@@ -77,15 +77,14 @@ Module.register("MMM-rain-forecast",{
          * received value 77 = 100 - 38 = 72 on the canvas
          * M01,200 is the start
          */
-        var setPoints='M01,100';
+        var setPoints='M01 100 S';
         // loop through the received data array raining[] normally 24 position 0 to 23
-        var xAs=1;
         for (i=0;i<raining.length;i++){
-            xAs=(xAs==1?xAs=2:xAs+13);
-            setPoints += ', L' + xAs + ',' + (100-raining[i]);
+            xAs=Math.round(i*(300/(raining.length-1)));
+            setPoints += xAs + ',' + (100-raining[i]) + ' ';
         }
         // End of th3 line make sure it drops to the bottom of the canvas to avoid silly fill
-        setPoints +=', L' + xAs + ',100 Z';
+        setPoints +='L' + xAs + ',100 Z';
         var svg='<svg class="graph" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">';
         //Set grid lines xAs ans yAs size is determined in CSS
         svg+='<g class="grid x-grid" id="xGrid"><line x1="1" x2="1" y1="00" y2="100"></line></g>';
@@ -95,15 +94,16 @@ Module.register("MMM-rain-forecast",{
         svg+='<path class="first_set" style="fill:' + this.config.fillColour + '" d="' + setPoints + '"></path>';
         svg+='</g>';
         // Set the class for the grid
-        svg+='<use class="grid double" xlink:href="#xGrid" style=""></use><use class="grid double" xlink:href="#yGrid" style=""></use>';
+        svg+='<use class="grid double" xlink:href="#xGrid" style=""></use>';
+        svg+='<use class="grid double" xlink:href="#yGrid" style=""></use>';
         // Time labels
         svg+='<g class="labels x-labels">';
-        svg+='<text x="20" y="115"  fill="white">' + times[1] + '</text>';
-        svg+='<text x="73" y="115"  fill="white">' + times[5]+ '</text>';
-        svg+='<text x="126" y="115" fill="white">' + times[9]+ '</text>';
-        svg+='<text x="179" y="115" fill="white">' + times[13] + '</text>';
-        svg+='<text x="232" y="115" fill="white">' + times[17] + '</text>';
-        svg+='<text x="285" y="115" fill="white">' + times[21] + '</text>';
+        svg+='<text x="20"  y="115"  fill="white">' + times[0] + '</text>';
+        svg+='<text x="65"  y="115"  fill="white">' + times[6] + '</text>';
+        svg+='<text x="120" y="115" fill="white">'  + times[12]+ '</text>';
+        svg+='<text x="175" y="115" fill="white">'  + times[18] + '</text>';
+        svg+='<text x="230" y="115" fill="white">'  + times[24] + '</text>';
+        svg+='<text x="285" y="115" fill="white">'  + times[30] + '</text>';
         svg+='</g></svg>';
         return svg;
     },
