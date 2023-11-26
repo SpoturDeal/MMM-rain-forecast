@@ -23,8 +23,8 @@ Module.register("MMM-rain-forecast",{
 		this.payload = false;
 		this.sendSocketNotification("RAIN_REQUEST", {
 			updateInterval: this.config.refreshInterval * 60 * 1000,
-            apiBase: "https://graphdata.buienradar.nl",
-            endpoint: "forecast/json",
+            apiBase: "https://gpsgadget.buienradar.nl",
+            endpoint: "data/raintext",
             lat: this.config.lat,
             lon: this.config.lon,
 		});
