@@ -2,9 +2,10 @@
 
 /* Magic Mirror
  * Module: Rain-forecast
- * Version 29th April 2018 decreased by request the width of the graph by 25% was 400px now 305px
+ * Version 29th November 2023 decreased by request the width of the graph by 25% was 400px now 305px
  * Displays a scalable vector graph of expected rain for a lon/lat pair based on a Dutch public Api (Buienradar)
- *  https://gpsgadget.buienradar.nl/data/raintext?lat=52.15&lon=5.5
+ *  https://gpsgadget.buienradar.nl/data/raintext?lat=52.15&lon=5.5  as text
+ *  https://graphdata.buienradar.nl/forecast/json?lat=52.5&lon=5.5  in json
  * By Spoturdeal.
  */
 Module.register("MMM-rain-forecast",{
@@ -17,14 +18,14 @@ Module.register("MMM-rain-forecast",{
         fillColour: '#0074d9',
         refreshInterval: 15,  // In minutes will be multiplied by 60 for seconds and 1000 for milliseconds
 	},
-    // Override start method.
+    // Override start method.  
 	start: function() {
 		Log.log("Starting module: " + this.name);
 		this.payload = false;
 		this.sendSocketNotification("RAIN_REQUEST", {
 			updateInterval: this.config.refreshInterval * 60 * 1000,
-            apiBase: "https://gpsgadget.buienradar.nl",
-            endpoint: "data/raintext",
+            apiBase: "https://graphdata.buienradar.nl",
+            endpoint: "forecast/json",
             lat: this.config.lat,
             lon: this.config.lon,
 		});
