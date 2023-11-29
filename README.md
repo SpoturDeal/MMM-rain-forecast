@@ -36,6 +36,7 @@ Update: 24th February 2019 Added Refresh interval (too many request sometimes en
 |---|---|
 |`lat`|The latitude of your position.<br>**Type:** `Float`<br>**Default:** <i>52.15</i>|
 |`lon`|The longitude of your position.<br>**Type:** `Float`<br>**Default:** <i>5.5</i>|
+|`multiplyOriginal`|If the colored area is to small increase to a higher number 4 to 8 <br>**Type:** `number` <br>**Default:** <i>4</i>|
 |`pleaseWait`| The text while waiting for data.. <br>**Type:** `string`<br>**Default:** <i>Please wait</i>
 |`noRainText`| The text displayed if there is no rain. <br>**Type:** `string`<br>**Default:** <i>Until %s no rain</i><br>**Remark:** write %s where you like to add the time example <i>Until 17:15 no rain </i>
 |`fillColour`| Defines the colour of the graphic. <br>**Type:** `string`<br>**Default:** <i>#0074d9</i><br>**Remark:** You can use colour names as in HTML like (blue, white, green) or RGB codes like #0074d9 which is bleu colour
@@ -49,7 +50,8 @@ Here is an example of an entry in `config.js`
 	header: "Expected rainfall", 
 	config: {   
                 lat: 52.15,
-                lon: 5.5,				
+                lon: 5.5,
+                multiplyOriginal: 4,			
 		pleaseWait: "Please wait",
 		noRainText: "Until %s no rain",
 		fillColour: '#0074d9',   // This is a blue color you can also use blue, cyan etc,
