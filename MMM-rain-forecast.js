@@ -11,9 +11,10 @@
 Module.register("MMM-rain-forecast",{
 	// Default module config.
 	defaults: {
-		lat: 52.15,
+	lat: 52.15,
         lon: 5.5,
-		noRainText: 'Until %s no rain',    // write %s where you like to add the time example Until 17:15 no rain
+	multiplyOriginal: 4,
+	noRainText: 'Until %s no rain',    // write %s where you like to add the time example Until 17:15 no rain
         pleaseWait: 'Please wait',
         fillColour: '#0074d9',
         refreshInterval: 15,  // In minutes will be multiplied by 60 for seconds and 1000 for milliseconds
@@ -82,7 +83,7 @@ Module.register("MMM-rain-forecast",{
         // loop through the received data array raining[] normally 24 position 0 to 23
         for (i=0;i<raining.length;i++){
             xAs=Math.round(i*(300/(raining.length-1)));
-            setPoints += xAs + ',' + (100-raining[i]) + ' ';
+            setPoints += xAs + ',' + (100-(raining[i]*multiplyOriginal)) + ' ';
         }
         // End of th3 line make sure it drops to the bottom of the canvas to avoid silly fill
         setPoints +='L' + xAs + ',100 Z';
