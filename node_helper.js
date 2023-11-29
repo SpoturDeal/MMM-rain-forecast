@@ -9,8 +9,8 @@ module.exports = NodeHelper.create({
 	},
 	// Override socketNotificationReceived method.
 	socketNotificationReceived: function(notification, payload) {
-		self = this;
-		this.url = payload.apiBase+"/" + payload.endpoint + "?lat=" + payload.lat + "&lon="+ payload.lon;
+		var self = this;
+ 		this.url = payload.apiBase+"/" + payload.endpoint + "?lat=" + payload.lat + "&lon=" + payload.lon;
         setInterval(function() {
 			self.getData(self)
 		}, payload.updateInterval);
@@ -39,27 +39,26 @@ module.exports = NodeHelper.create({
 			});
 			return;
 		}
-        // This is test data just to see the graph if there is no rain
-        //body="077|10:05\n034|10:10\n101|10:15\n087|10:20\n077|10:25\n000|10:30\n000|10:35\n000|10:40\n077|10:45\n087|10:50\n087|10:55\n077|11:00\n077|11:05\n034|11:10\n017|11:15\n000|11:20\n000|11:25\n000|11:30\n000|11:35\n000|11:40\n000|11:45\n000|11:50\n000|11:55\n000|12:00";
+		// Test data
+        //body = '{"color":"#5A9BD3","lat":52.09,"lon":5.12,"borders":[{"title":"licht","lower":0,"upper":40},{"title":"matig","lower":40,"upper":70},{"title":"zwaar","lower":70,"upper":100}],"timeOffset":2.0,"radius":1,"forecasts":[{"datetime":"2019-05-09T09:50:00","utcdatetime":"2019-05-09T07:50:00","precipitation":1.0,"precipation":0.2,"original":20,"value":0},{"datetime":"2019-05-09T09:55:00","utcdatetime":"2019-05-09T07:55:00","precipitation":0.0,"precipation":0.0,"original":0,"value":0},{"datetime":"2019-05-09T10:00:00","utcdatetime":"2019-05-09T08:00:00","precipitation":0.0,"precipation":0.0,"original":0,"value":0},{"datetime":"2019-05-09T10:05:00","utcdatetime":"2019-05-09T08:05:00","precipitation":0.0,"precipation":0.0,"original":0,"value":0},{"datetime":"2019-05-09T10:10:00","utcdatetime":"2019-05-09T08:10:00","precipitation":0.0,"precipation":0.0,"original":0,"value":0},{"datetime":"2019-05-09T10:15:00","utcdatetime":"2019-05-09T08:15:00","precipitation":0.0,"precipation":0.0,"original":0,"value":0},{"datetime":"2019-05-09T10:20:00","utcdatetime":"2019-05-09T08:20:00","precipitation":0.0,"precipation":0.0,"original":0,"value":0},{"datetime":"2019-05-09T10:25:00","utcdatetime":"2019-05-09T08:25:00","precipitation":0.0,"precipation":0.0,"original":0,"value":0},{"datetime":"2019-05-09T10:30:00","utcdatetime":"2019-05-09T08:30:00","precipitation":0.0,"precipation":0.0,"original":0,"value":0},{"datetime":"2019-05-09T10:35:00","utcdatetime":"2019-05-09T08:35:00","precipitation":0.0,"precipation":0.0,"original":0,"value":0},{"datetime":"2019-05-09T10:40:00","utcdatetime":"2019-05-09T08:40:00","precipitation":0.0,"precipation":0.0,"original":0,"value":0},{"datetime":"2019-05-09T10:45:00","utcdatetime":"2019-05-09T08:45:00","precipitation":0.0,"precipation":0.0,"original":0,"value":0},{"datetime":"2019-05-09T10:50:00","utcdatetime":"2019-05-09T08:50:00","precipitation":0.0,"precipation":0.0,"original":0,"value":0},{"datetime":"2019-05-09T10:55:00","utcdatetime":"2019-05-09T08:55:00","precipitation":0.0,"precipation":0.0,"original":0,"value":0},{"datetime":"2019-05-09T11:00:00","utcdatetime":"2019-05-09T09:00:00","precipitation":0.0,"precipation":0.0,"original":0,"value":0},{"datetime":"2019-05-09T11:05:00","utcdatetime":"2019-05-09T09:05:00","precipitation":0.0,"precipation":0.0,"original":0,"value":0},{"datetime":"2019-05-09T11:10:00","utcdatetime":"2019-05-09T09:10:00","precipitation":0.0,"precipation":0.0,"original":0,"value":0},{"datetime":"2019-05-09T11:15:00","utcdatetime":"2019-05-09T09:15:00","precipitation":0.0,"precipation":0.0,"original":0,"value":0},{"datetime":"2019-05-09T11:20:00","utcdatetime":"2019-05-09T09:20:00","precipitation":0.0,"precipation":0.0,"original":0,"value":0},{"datetime":"2019-05-09T11:25:00","utcdatetime":"2019-05-09T09:25:00","precipitation":0.0,"precipation":0.0,"original":0,"value":0},{"datetime":"2019-05-09T11:30:00","utcdatetime":"2019-05-09T09:30:00","precipitation":0.0,"precipation":0.0,"original":0,"value":0},{"datetime":"2019-05-09T11:35:00","utcdatetime":"2019-05-09T09:35:00","precipitation":0.0,"precipation":0.0,"original":0,"value":0},{"datetime":"2019-05-09T11:40:00","utcdatetime":"2019-05-09T09:40:00","precipitation":0.0,"precipation":0.0,"original":0,"value":0},{"datetime":"2019-05-09T11:45:00","utcdatetime":"2019-05-09T09:45:00","precipitation":0.0,"precipation":0.0,"original":0,"value":0},{"datetime":"2019-05-09T11:50:00","utcdatetime":"2019-05-09T09:50:00","precipitation":0.0,"precipation":0.0,"original":0,"value":0},{"datetime":"2019-05-09T11:55:00","utcdatetime":"2019-05-09T09:55:00","precipitation":0.0,"precipation":0.0,"original":0,"value":0},{"datetime":"2019-05-09T12:00:00","utcdatetime":"2019-05-09T10:00:00","precipitation":0.0,"precipation":0.0,"original":0,"value":0},{"datetime":"2019-05-09T12:05:00","utcdatetime":"2019-05-09T10:05:00","precipitation":0.0,"precipation":0.0,"original":0,"value":0},{"datetime":"2019-05-09T12:10:00","utcdatetime":"2019-05-09T10:10:00","precipitation":0.0,"precipation":0.0,"original":0,"value":0},{"datetime":"2019-05-09T12:15:00","utcdatetime":"2019-05-09T10:15:00","precipitation":0.0,"precipation":0.0,"original":0,"value":0},{"datetime":"2019-05-09T12:20:00","utcdatetime":"2019-05-09T10:20:00","precipitation":0.2,"precipation":1.0,"original":20,"value":0}],"emptytext":"Geen neerslag verwacht","createdUtc":"2019-05-09T07:45:19.1334476Z","lastRefreshUtc":"2019-05-09T07:37:07","elapsedMs":0}';
 
         // Make an array with the amount of rain  077|10:05 = rain|time
         var rainDrops = [];
         // Make an array with the times received
-		var times = [];
+        var times = [];
         // Count all rain together
-		var expectRain = 0;
-        // Make seprate lines
-		var lines = body.split('\n');
-		for(var i = 0;i < lines.length-1;i++){
-			var values = lines[i].split('|');
-            // split rain from time
-            // rainDrops.push(values[0]=="NaN"?0:(Math.pow(10,(parseInt(values[0])-109)/32)) * 10);
-            // 29th April 2018 changed devide from 3 to 2.55 makes a better graph
-						// Devide the recieved value by 2.5 we can use less height maximum rain = 255 /2.55 = 100 graph height is 100
-			rainDrops.push(values[0]=="NaN"?0:parseInt(values[0])/2.55);
-            times.push(values[1]);
-			expectRain += parseInt(values[0]);
-		}
+        var expectRain = 0;
+        data = JSON.parse(body);
+        forecast = data.forecasts;
+        for (raindata in forecast) {
+            if (forecast.hasOwnProperty(raindata)) {
+                var rain = forecast[raindata].original;
+                var time = forecast[raindata].datetime.substring(11, 16);
+                expectRain += parseInt(rain);
+                rainDrops.push(rain);
+                times.push(time);
+            }
+        }
         // Send all to script
         self.sendSocketNotification('RAIN_DATA', {
             rainDrops:  rainDrops,
